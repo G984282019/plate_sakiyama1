@@ -1,0 +1,26 @@
+/*
+@font-face {
+  font-family: 'MonacakomiPlus';
+  src: url("../fonts/MonacakomiPlus.woff") format("woff");
+}
+*/
+
+@font-face {
+  font-family: 'WebFont-RictyDiminished-Regular';
+  src: url("/plate3/fonts/RictyDiminished-Regular.woff") format("woff");
+}
+
+
+.my-monospace {
+	font-family: "Ricty Diminished", "WebFont-RictyDiminished-Regular", monospace;
+}
+
+.my-pre-wrap {
+	white-space: pre-wrap;
+}
+
+/*
+.my-monospace {
+	font-family: "WebFont-RictyDiminished-Regular", monospace;
+}
+*/

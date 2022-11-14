@@ -1,0 +1,47 @@
+body{
+	background-color: white;
+	color: black;
+}
+.tbox {
+	position: absolute;
+	background-color: white;
+	color: black;
+	border-color: blue;
+	font-size: 10pt;
+	line-height: 1.0;
+	overflow-y: scroll;
+	resize: none;
+}
+
+#terminal1 {
+	top: 0px;
+	left: 0px;
+	z-index: 2147483647;
+	width: 50em;
+	height: 55ex;
+	padding: 3pt;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+#terminal2 {
+	top: 5px;
+	left: 5px;
+	z-index: 100;
+}
+
+#terminal3 {
+	top: 5px;
+	left: 5px;
+	z-index: 0;
+}
+
+.input {
+	color: #0000af;
+}
+
+.cursor {
+	color: #0000af;
+	background-color: #7f7f7f;
+}
+

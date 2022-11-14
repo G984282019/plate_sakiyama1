@@ -1,0 +1,16 @@
+/*
+@font-face {
+  font-family: 'MonacakomiPlus';
+  src: url("../fonts/MonacakomiPlus.woff") format("woff");
+}
+*/
+
+.CodeMirror {
+	/*font-family: MonacakomiPlus, monospace;*/
+	font-family: "Ricty Diminished", "WebFont-RictyDiminished-Regular", monospace;
+    font-size: 12pt;
+	width: 100%;
+	transition: height 0.3s linear;
+	border: 1px solid silver;
+}
+

@@ -1,0 +1,38 @@
+.icon {
+	border: solid 1px #a0a0a0;
+	border-radius: 5px;
+	float: right;
+	margin-left: 2px;
+}
+
+.iconS {
+	font-size: small;
+}
+
+/*
+ * Header
+ */
+.nav-masthead .nav-link {
+	background-color: transparent;
+	border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover, .nav-masthead .nav-link:focus {
+	border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .active {
+	border-bottom-color: #fff;
+}
+
+div#main a {
+	text-decoration: none;
+}
+
+div#main a:hover {
+	opacity: 0.7
+}
+
+div#main .list-group-flush > .list-group-item {
+	border-width: 0 0 0 0;
+}

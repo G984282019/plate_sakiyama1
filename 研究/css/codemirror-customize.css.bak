@@ -1,0 +1,211 @@
+/*
+@font-face {
+  font-family: 'MonacakomiPlus';
+  src: url("../fonts/MonacakomiPlus.woff") format("woff");
+}
+*/
+
+.CodeMirror {
+	/*font-family: MonacakomiPlus, monospace;*/
+    font-size: 12pt;
+	width: 100%;
+	height: 350px;
+	transition: height 0.3s linear;
+	border: 1px solid silver;
+}
+
+.CodeMirror.is-expand {
+	height: 720px;
+}
+
+#editor-pane {
+	transition: width 0.3s linear;
+}
+
+#statement-pane {
+	transition: width 0.3s linear;
+}
+#statement-pane > .card {
+	height: 382px;
+}
+
+#qa-pane > .card {
+	height: 382px;
+}
+
+#log-pane > .card {
+	height: 382px;
+	transition: height 0.3s linear;
+}
+#log-pane > .card.is-expand {
+	height: 762px;
+}
+
+#editor-menu a {
+	cursor: pointer;
+}
+
+.question {
+	border: solid 1px #f0f0f0;
+	background-color: #f8f8f8;
+	word-wrap: break-word;
+}
+
+.answer {
+	border: solid 1px #f0f0f0;
+	word-wrap: break-word;
+}
+
+.qatitle {
+	font-size: 9pt;
+	margin-top: 1rem;
+}
+
+.qaauthor {
+	font-weight: bold;
+}
+
+.qatext {
+	line-height: 1.0;
+	white-space: pre-wrap;
+	font-family: monospace;
+}
+
+#giveMeHint {
+	opacity: 0.05;
+}
+
+.example {
+	color: #00007f;
+	font-family: monospace;
+}
+.example > i {
+	color: blue;
+}
+
+.icon {
+	border: solid 1px #a0a0a0;
+	float: right;
+	margin-left: 2px;
+}
+
+.iconS {
+	font-size: small;
+}
+
+#test-result-content {
+	color: #404040;
+	font-family: monospace;
+	height: 320px;
+	overflow: auto;
+}
+
+.test {
+	float: left;
+	display: none;
+}
+
+.test-ok {
+	background-color: #7f7fff;
+	color: white;
+}
+
+.test-ng {
+	background-color: #cf0000;
+	color: white;
+	cursor: help;
+}
+
+.test-error {
+	color: red;
+	font-style: bold;
+	cursor: help;
+}
+
+.fatal {
+	background-color: black;
+	color: white;
+}
+
+#log-output {
+	overflow: auto;
+	height: 491px;
+}
+
+.log-output-item {
+	cursor: pointer;
+	border: 1px solid #F0F0F0;
+}
+
+.log-output-item:hover {
+	background-color: #CBE6F3 !important;
+}
+
+.log-output-item-focus {
+	background-color: #DCEEF7 !important;
+}
+
+
+#question_text {
+	font-family: monospace;
+}
+
+th.stickyrow {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+th.stickycolumn {
+	position: -webkit-sticky;
+	position: sticky;
+	left: 0;
+}
+
+th.stickycorner {
+	z-index: 2;
+}
+
+.nav-pills .nav-link.active.error, .nav-tabs .show > .nav-link {
+	color: white;
+	background-color: red;
+}
+.nav-pills .nav-link.error {
+	color: red;
+	background-color: white;
+}
+
+.output {
+	border-top: solid 1px #cfcfcf;
+	border-bottom: solid 1px #cfcfcf;
+	border-right: solid 1px #cfcfcf;
+}
+.output > pre > i {
+	color: #00007f;
+}
+
+.expected {
+	border-top: solid 1px #cfcfcf;
+	border-bottom: solid 1px #cfcfcf;
+}
+
+.expected > pre > i {
+	color: #00007f;
+}
+
+
+#test-result-content .error-output {
+	color: red;
+	cursor: pointer;
+}
+
+#logChart {
+	position: relative;
+	height: 200px;
+}
+
+#mycanvas {
+	border: 1px #cfcfcf solid;
+	padding: 2px;
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon-plate.png">
+    <title>学生の取り組み一覧</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="Bootstrap/css/custom.min.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="jquery-1.11.3/jquery.min.js"></script>
+    <script src="jquery-1.11.3/jquery.base64.js"></script>
+    <!-- popper.js の読み込み -->
+    <script src="popper2.9.2/popper.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <script src="moment/moment.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/icon.js"></script>
+      <script src="js/tasa_status.js"></script>
+    <link rel="stylesheet" href="css/plate.css">
+    <link rel="stylesheet" href="css/codemirror-customize.css">
+    <link href="css/font.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+    <script src="my-index/my-index.js"></script>
+</head>
+<!--<h2>プログラミング演習支援システム</h2>-->
+<body class="text-dark bg-white">
+    <div>
+        <header class="mb-5">
+            <nav class="nav navbar-expand-lg nav-masthead text-light bg-secondary">
+                <div class="container-fluid p-1" id="menu">
+                    <span class="navbar-brand">プログラミング演習支援システム</span>
+                    <a class="nav-link text-light float-md-end" href="#" id="logout">ログアウト</a>
+                    <a class="nav-link text-light float-md-end" href="#" id="change_password">パスワード変更</a>
+                    <a class="nav-link text-light float-md-end" href="#" id="students">学生ホーム</a>
+                    <a class="nav-link text-light float-md-end" href="#" id="tasa_progresses">進捗表</a>
+                    <span class="nav-link text-light float-md-end" href="#" id="tasa_status">取り組み状況</span>
+                    <a class="nav-link text-light float-md-end" href="#" id="tasa_qas">Q＆A</a>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container" id="main">
+        <h2 class="row" id="message">プログラミングの取り組み状況</h2>
+        <div>　</div>
+        <div class="row row-cols-auto">
+            <div class="col">
+
+                <!--クラス選択-->
+                <div class="dropdown">
+                    組:
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="groupNameMenuBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        組
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="groupNameMenuBtn" id="groupNameMenu">
+                        <li><a class="dropdown-item" href="#">A組</a></li>
+                        <li><a class="dropdown-item" href="#">B組</a></li>
+                        <li><a class="dropdown-item" href="#">C組</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col">
+                <!--授業回選択-->
+                <div class="dropdown">
+                    授業回:
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="groupQuizMenuBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        回
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="groupQuizMenuBtn" id="groupQuizMenu">
+                        <li><a class="dropdown-item" href="#">第1回</a></li>
+                        <li><a class="dropdown-item" href="#">第2回</a></li>
+                        <li><a class="dropdown-item" href="#">第3回</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div>　</div>
+
+        <!--絞り込みボタン-->
+        <div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+        <div class="row row-cols-auto">
+            <div class="col">
+                <button type="button" class="btn btn-outline-dark" id="NarrowdownBtn">
+                    検索
+                </button>
+            </div>
+
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="FormulaCheck">
+                    <label class="form-check-label" for="FormulaCheck">
+                      詳細な条件設定を適用する
+                    </label>
+                  </div>
+            </div>
+            
+        </div>
+
+        <div>　</div>
+
+        <div class="row row-cols-auto" id="ConditionMain">
+
+            <!--条件追加ボタン-->
+            <!--<div class="col">
+                <button type="button" class="btn btn-light" id="ConditionPlusBtn">
+                    +
+                </button>
+            </div>-->
+
+            <!--絞り込み条件選択ボタングループ-->
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Condition" id="groupCondition1">
+                    条件１
+                    <div class="btn-group" role="group">
+                        <!--条件項目一覧-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupConditionMenuBtn1" data-bs-toggle="dropdown" aria-expanded="false">
+                            絞り込み条件
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupConditionMenuBtn" id="groupConditionMenu1">
+                                <li><a class="dropdown-item" href="#">解答中の課題</a></li>
+                                <li><a class="dropdown-item" href="#">予習問題提出状況</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">編集時間</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">アクション</a></li>
+                                <li><a class="dropdown-item" href="#">状態</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">コンパイル回数</a></li>
+                                <li><a class="dropdown-item" href="#">実行回数</a></li>
+                                <li><a class="dropdown-item" href="#">エラー回数</a></li>
+                            </ul>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <!--昇順降順-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupSortMenuBtn1" data-bs-toggle="dropdown" aria-expanded="false">
+                            並べ替え
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupSortMenuBtn" id="groupSortMenu1">
+                                <li><a class="dropdown-item" href="#">昇順</a></li>
+                                <li><a class="dropdown-item" href="#">降順</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Condition" id="groupCondition2">
+                    条件１
+                    <div class="btn-group" role="group">
+                        <!--条件項目一覧-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupConditionMenuBtn2" data-bs-toggle="dropdown" aria-expanded="false">
+                            絞り込み条件
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupConditionMenuBtn" id="groupConditionMenu2">
+                                <li><a class="dropdown-item" href="#">解答中の課題</a></li>
+                                <li><a class="dropdown-item" href="#">予習問題提出状況</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">編集時間</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">アクション</a></li>
+                                <li><a class="dropdown-item" href="#">状態</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">コンパイル回数</a></li>
+                                <li><a class="dropdown-item" href="#">実行回数</a></li>
+                                <li><a class="dropdown-item" href="#">エラー回数</a></li>
+                            </ul>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <!--昇順降順-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupSortMenuBtn2" data-bs-toggle="dropdown" aria-expanded="false">
+                            並べ替え
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupSortMenuBtn" id="groupSortMenu2">
+                                <li><a class="dropdown-item" href="#">昇順</a></li>
+                                <li><a class="dropdown-item" href="#">降順</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Condition" id="groupCondition3">
+                    条件１
+                    <div class="btn-group" role="group">
+                        <!--条件項目一覧-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupConditionMenuBtn3" data-bs-toggle="dropdown" aria-expanded="false">
+                            絞り込み条件
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupConditionMenuBtn" id="groupConditionMenu3">
+                                <li><a class="dropdown-item" href="#">解答中の課題</a></li>
+                                <li><a class="dropdown-item" href="#">予習問題提出状況</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">編集時間</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">アクション</a></li>
+                                <li><a class="dropdown-item" href="#">状態</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">コンパイル回数</a></li>
+                                <li><a class="dropdown-item" href="#">実行回数</a></li>
+                                <li><a class="dropdown-item" href="#">エラー回数</a></li>
+                            </ul>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <!--昇順降順-->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="groupSortMenuBtn3" data-bs-toggle="dropdown" aria-expanded="false">
+                            並べ替え
+                        </button>
+                            <ul class="dropdown-menu" aria-labelledby="groupSortMenuBtn" id="groupSortMenu3">
+                                <li><a class="dropdown-item" href="#">昇順</a></li>
+                                <li><a class="dropdown-item" href="#">降順</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div>　</div>
+
+        <div class="row" >
+            <div class="col col-lg-8">
+                <!--数式入力フォーム-->
+                <form>
+                    <div>
+                        <input type="text" class="form-control" id="FormulaForm" placeholder="詳細な条件設定　例：a+b*c>10">
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <div>　</div>
+
+        <div id="StatusDiv">
+            <table class="table table-sm text-dark table-white" id="Status">
+                <thead>
+                    <tr>
+                        <th scope="col" name="uId">ユーザID</th>
+                        <th scope="col" name="pQuiz">予習問題</th>
+                        <th scope="col" name="progress">進捗状況</th>
+                        <th scope="col" name="aQuiz" >解答中の課題</th>
+                        <th scope="col" name="editTime">編集時間</th>
+                        <th scope="col" name="action">アクション</th>
+                        <th scope="col" name="state">状態</th>
+                        <th scope="col" name="compile">コンパイル回数</th>
+                        <th scope="col" name="run">実行回数</th>
+                        <th scope="col" name="error">エラー回数</th>
+                    </tr>
+                </thead>
+                <tbody id="StatusBody"></tbody>
+            </table>
+            <ul class="small">
+                <li>説明文</li>
+            </ul>
+        </div>
+    </div>
+</body></html>
